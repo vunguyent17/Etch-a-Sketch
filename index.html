@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <style>
+        
+        .container {
+            margin-left: 50vh;
+            display: grid;
+            height: 100vh;
+            border: 3px solid black;  
+        }
+
+    </style>
+    <body>
+        <button id="numberOfSquareBtn">Start/Reset</button>
+        <div id="container"></div>
+    </body>
+    <script>
+        function css( element, property ) {
+        return window.getComputedStyle( element, null ).getPropertyValue( property );
+        }
+        
+        function randomRGB(){
+            return Math.floor(Math.random() * 360);
+        }
+        
+        function createGrid(numberOfSquarePerSide) {
+        let divOfContainer; 
+                      
+        container.style.cssText = `grid-template-columns: repeat(${numberOfSquarePerSide}, 1fr);
+        grid-template-rows: repeat(${numberOfSquarePerSide}, 1fr)`;
+        container.style.width = css(container, "height");
+        
+        let numberOfSquare = numberOfSquarePerSide*numberOfSquarePerSide;
+        for (let i=0; i<numberOfSquare ;i++) {
+            divOfContainer = document.createElement(`div`);
+            divOfContainer.setAttribute('data-lightness','55');
+            container.appendChild(divOfContainer);
+        }
+        
+
+        divs = container.querySelectorAll(`div`);
+        divs.forEach((div) => {
+        div.addEventListener(`mousemove`, (event) => {
+            if (previousDiv != div){
+            let lightness = +event.target.getAttribute('data-lightness');
+            if (lightness>0) lightness -= 5;
+            event.target.style.cssText = `background-color: hsl(${randomRGB()},100%,${lightness}%); 
+            box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);`;
+            event.target.setAttribute(`data-lightness`,`${lightness}`);
+            previousDiv=div;  
+            }  
+        });
+       /* div.addEventListener(`mouseleave`, (event) => {
+            let lightness = +event.target.getAttribute('data-lightness');
+                event.target.style.cssText = `background-color: black; opacity: ${1-0.02*lightness}`;
+                previousDiv = 0;
+            })*/
+            });
+        }
+        
+
+        let numberOfSquareBtn = document.getElementById(`numberOfSquareBtn`);
+        let container = document.getElementById(`container`);
+        let divs; numberOfSquarePerSide = 0; previousDiv =0;
+
+        container.classList.add(`container`);
+        container.style.width = css(container, "height");
+        numberOfSquareBtn.addEventListener(`click`, () =>{
+            divs = container.querySelectorAll(`div`);
+            while(container.firstElementChild)
+                container.removeChild(container.lastChild);
+            numberOfSquarePerSide = +prompt(`How many squares per side?`,0);
+            createGrid(numberOfSquarePerSide);
+        });
+
+        </script>
+</html>
