@@ -1,6 +1,6 @@
 # Trò chơi Etch-A-Sketch
 
-<img src="" width="300" alt="Trang chủ" />
+<img src="https://github.com/vunguyent17/Etch-a-Sketch/blob/main/Screenshot/Screenshot-Etch-A-Sketch.png" width="300" alt="Trang chủ" />
 
 ## Giới thiệu / Introduction
 
@@ -25,7 +25,7 @@ This website simulates Etch-A-Sketch machine, a manually operated plotter with a
 
 
 ## Demo
-[Website](etch-a-sketch-vunt.netlify.app)
+[Website](https://etch-a-sketch-vunt.netlify.app/)
 
 
 ## Contributing
