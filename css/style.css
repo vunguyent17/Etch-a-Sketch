@@ -1,0 +1,10 @@
+.container {
+  display: grid;
+  height: 95vh;
+  border: 3px solid black; 
+  background-color: white;
+  position: absolute;
+  left: 100px;
+  top: 5px;
+  bottom: 5px;
+}
